@@ -56,46 +56,45 @@ public class MainActivity extends AppCompatActivity {
                 switch (MainActivity.this.verify()){
                     //exito
                     case -1:
-                        Toast.makeText(MainActivity.this,"-1",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Se ha publicado el producto con exito.",Toast.LENGTH_SHORT).show();
                         break;
                     //errores
                     case 0:
                         //Campos incompletos:
-                        Toast.makeText(MainActivity.this,"0",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor complete todos los campos obligatorios.",Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         //Categoria no seleccionada:
-                        Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor seleccione una categoria.",Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         //Precio invalido:
-                        Toast.makeText(MainActivity.this,"2",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor ingrese un precio válido.",Toast.LENGTH_SHORT).show();
                         break;
                     case 3:
                         //Descuento invalido:
-                        Toast.makeText(MainActivity.this,"3",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor seleccione un porcentaje mayor a 0 o quite la opcion de ofrecer descuento de envio.",Toast.LENGTH_SHORT).show();
                         break;
                     case 4:
                         //email invalido:
-                        Toast.makeText(MainActivity.this,"4",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor ingrase una dirección de correo valida.",Toast.LENGTH_SHORT).show();
                         break;
                     case 5:
                         //Campos con caracteres especiales:
-                        Toast.makeText(MainActivity.this,"5",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor no utilice caracteres inválidos",Toast.LENGTH_SHORT).show();
                         break;
                     case 6:
                         //Direccion no completada:
-                        Toast.makeText(MainActivity.this,"6",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor ingrese la dirección de retiro o quite la opcion de retiro en persona.",Toast.LENGTH_SHORT).show();
                         break;
                     case 7:
                         //Terminos no aceptados:
-                        Toast.makeText(MainActivity.this,"7",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Por favor acepte los terminos y condiciones.",Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         //error generico:
-                        Toast.makeText(MainActivity.this,"Error",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"Error desconocido.",Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
         //Muestra el slider o lo oculta si se activa el switch
@@ -138,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         else if(!email.getText().toString().contains("@")||(email.getText().toString().split("@"))[1].length()<=3)
             return 4;
             //No hay caracteres especiales?
-        else if (!(noSpecialChars(title)&&(isFilled(description)&&noSpecialChars(description))))
+        else if (!(noSpecialChars(title)&&(isFilled(description)&&noSpecialChars(description))&&(!inPerson.isChecked()||(!isFilled(direction)||noSpecialChars(direction)))))
             return 5;
             //Se puso una direccion si se habilito la entrega en persona?
         else if(inPerson.isChecked()&&!isFilled(direction))
