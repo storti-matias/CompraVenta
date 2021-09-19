@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         else if(!email.getText().toString().contains("@")||(email.getText().toString().split("@"))[1].length()<=3)
             return 4;
             //No hay caracteres especiales?
-        else if (!(noSpecialChars(title)&&(isFilled(description)&&noSpecialChars(description))&&(!inPerson.isChecked()||(!isFilled(direction)||noSpecialChars(direction)))))
+        else if (!(noSpecialChars(title)&&(!isFilled(description)||noSpecialChars(description))&&(!inPerson.isChecked()||(!isFilled(direction)||noSpecialChars(direction)))))
             return 5;
             //Se puso una direccion si se habilito la entrega en persona?
         else if(inPerson.isChecked()&&!isFilled(direction))
